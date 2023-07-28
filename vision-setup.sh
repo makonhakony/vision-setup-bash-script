@@ -3,9 +3,9 @@
 # Set the color variables
 # TODO
 
-sudo apt update && sudo apt upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 
-sudo apt install python3
+sudo apt-get install python3
 echo "Python Version: "
 python --version
 
@@ -16,19 +16,11 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 sudo apt-get update
 
-sudo apt-get install libedgetpu1-std
-
-sudo apt-get install python3-pycoral
+sudo apt-get install libedgetpu1-std python3-pycoral python3-picamera2 libcamera-dev libcamera-utils libcamera-tests -y
 
 # vision packages
 # - pip packages
-sudo pip install tensorflow -y
-sudo pip install pillow -y
-sudo pip install matplotlib -y
-sudo pip install tensorflow-hub -y
-
-# - apt packages
-sudo apt-get install python3-picamera2 -y
+sudo pip install tensorflow pillow matplotlib tensorflow-hub -y
 
 cat <<EOF > vision_version.py
 import tensorflow as tf
@@ -40,7 +32,6 @@ EOF
 
 python vision_version.py
 
-sudo apt-get install libcamera-dev libcamera-utils libcamera-tests
 echo "Test camera"
 libcamera-hello
 
